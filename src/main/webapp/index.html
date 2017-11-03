@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" >
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Software Heladera</title>
+        <!-- Your custom styles (optional) -->
+        <link href="css/main.css" rel="stylesheet">
+       
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+        <script src="node_modules/underscore/underscore.js"></script>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+      
+    </head>
+
+    <body ng-app="myApp" >
+
+       <nav class="navbar navbar-expand-lg navbar-dark indigo">
+            <a class="navbar-brand" href="#/!"> Software Heladera</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+             aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref="Compras"  ><i class="fa fa-map-marker" aria-hidden="true"></i> Compras </a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </nav>
+        
+        <!-- VISTA -->
+        <div ui-view></div>
+        
+      
+
+        <script src="js/domain/Compra.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/domain/ArticuloCompra.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/services/CompraService.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="js/controllers/ComprasController.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/controllers/CargaController.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="js/routes.js" type="text/javascript" charset="utf-8"></script>
+        <!-- APLICATION -->
+        <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+        
+    </body>
+
+</html>

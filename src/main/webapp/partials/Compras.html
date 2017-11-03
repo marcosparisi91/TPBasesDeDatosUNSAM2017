@@ -1,0 +1,25 @@
+<div class="container-fluid" >
+  
+    <table class="table table-bordered ">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Fecha</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="Compra in comprasCtrl.compras">
+            <th > <a ui-sref="CargaCompra({id: Compra.idcompra})"> {{Compra.idcompra}} </a></th>
+            <td class="color-negro">{{Compra.descripcion}}</td>
+            <td class="color-negro">{{Compra.fecha_hora}}</td>
+            
+          </tr>
+
+        </tbody>
+    </table>
+
+
+
+</div>
