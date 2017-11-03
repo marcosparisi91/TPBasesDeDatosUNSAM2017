@@ -14,6 +14,8 @@ import org.uqbar.xtrest.json.JSONUtils
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 @Controller
 class CompraController {
@@ -28,6 +30,7 @@ class CompraController {
 				"d4m0st0d0");
 			var Statement s = conexion.createStatement()
 			var ResultSet rs = s.executeQuery("select * from compra");
+			// order by idcompra desc limit 10
 			var List<Compra> compras = new ArrayList<Compra>()
 
 			while (rs.next()) {
@@ -69,6 +72,35 @@ class CompraController {
 		}
 
 	}
+	
+	@Put("/insertarCompra")
+	def Result insertarCompra(){
+		try{
+		DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
+				"d4m0st0d0");
+			 var String fecha= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())
+			var Statement s = conexion.createStatement()
+			//
+			
+			s.executeUpdate("INSERT INTO compra (fecha_hora, descripcion) VALUES ('"+fecha+"', '');");
+		
+			 var ResultSet rs = s.executeQuery("SELECT LAST_INSERT_ID() as idcompra;") 
+				var String idcompra
+			while (rs.next()) {
+				idcompra = rs.getString("idcompra")
+			}
+		
+			conexion.close();
+			response.contentType = ContentType.APPLICATION_JSON
+			ok(idcompra.toJson)
+			
+		} catch (Exception E) {
+			println(E.message)
+			internalServerError(E.message)
+		}
+	}
+	
 
 	def static void main(String[] args) {
 		XTRest.start(9000, CompraController)

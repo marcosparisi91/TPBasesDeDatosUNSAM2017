@@ -1,6 +1,7 @@
 class ComprasController{
     
-    constructor(ComprasService){
+    constructor(ComprasService,$state){
+        this.$state=$state
         this.ComprasService = ComprasService
         this.compras =[]
         this.findCompras()
@@ -10,6 +11,12 @@ class ComprasController{
       this.ComprasService.findCompras((response)=>{
            this.compras =_.map(response.data,Compra.asCompra )
       })
+    }
+
+    insertarCompra(){
+        this.ComprasService.insertarCompra((response)=>{
+            this.$state.go('CargaCompra', {id: response.data})
+       })
     }
   
 }
