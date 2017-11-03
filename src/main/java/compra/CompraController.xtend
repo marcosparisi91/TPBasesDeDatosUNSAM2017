@@ -27,7 +27,7 @@ class CompraController {
 		try {
 			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
 			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
-				"d4m0st0d0");
+				"1234");
 			var Statement s = conexion.createStatement()
 			var ResultSet rs = s.executeQuery("select * from compra");
 			// order by idcompra desc limit 10
@@ -54,7 +54,7 @@ class CompraController {
 			
 			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
 			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
-				"d4m0st0d0");
+				"1234");
 			var Statement s = conexion.createStatement()
 			var ResultSet rs = s.executeQuery("SELECT art.idarticulo, art.descripcion, art.categoria_idcategoria, art.unidad_idunidad, ahc.cantidad FROM articulo art left join articulo_has_compra ahc on art.idarticulo = ahc.articulo_idarticulo where ahc.compra_idcompra = '"+id+"'");
 			var List<ArticuloCompra> itemCompra = new ArrayList<ArticuloCompra>()
@@ -78,7 +78,7 @@ class CompraController {
 		try{
 		DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
 			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
-				"d4m0st0d0");
+				"1234");
 			 var String fecha= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())
 			var Statement s = conexion.createStatement()
 			//
