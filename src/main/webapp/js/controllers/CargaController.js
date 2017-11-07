@@ -8,7 +8,7 @@ class CargaController{
        this.findAtributosCompra()
        this.articulo=''
        this.cantidad = 0
-        
+            
     }
 
     findArticulosCompras(){
@@ -28,6 +28,8 @@ class CargaController{
         this.ComprasService.insertarArticulo(new ArticuloInsertar(this.$stateParams.id,this.articulo, this.cantidad),(response)=>
             {
                 this.findArticulosCompras()
+                this.articulo = ''
+                this.cantidad=0
             })
           
       }
@@ -37,5 +39,8 @@ class CargaController{
                 this.ComprasService.cambiarDescripcionCompra(this.compra[0],(response)=>{
             })
       }
+    }
+    eliminar(idarticulo){
+        //Eliminar articulo
     }
 }

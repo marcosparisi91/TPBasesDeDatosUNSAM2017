@@ -44,16 +44,20 @@
                 <tr>
                   <th scope="col">ID articulo</th>
                   <th scope="col">Descripcion</th>
-                  <th scope="col">cantidad</th>
-                  
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Accion</th>
                 </tr>
               </thead>
               <tbody>
                 <tr ng-repeat="articulo in cargaCtrl.articulos">
-                  <th > {{articulo.idarticulo}} </a></th>
+                  <th > {{articulo.idarticulo}} </th>
                   <td class="color-negro">{{articulo.descripcion}}</td>
                   <td class="color-negro">{{articulo.cantidad_compra}}</td>
-                  
+                  <td class="color-negro">
+                      <button type="button" class="btn btn-default" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                        </button>
+                    <a ng-click="cargaCtrl.eliminar(articulo.idarticulo)">Eliminar</a></td>
                 </tr>
       
               </tbody>
