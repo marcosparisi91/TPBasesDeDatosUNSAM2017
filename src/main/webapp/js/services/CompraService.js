@@ -19,6 +19,15 @@ class ComprasService{
     insertarCompra(callback){
         this.$http.put('http://localhost:9000/insertarCompra').then(callback)
     }
+    findAtributosCompra(id,callback){
+        this.$http.get('http://localhost:9000/compraAtributos/'+ id).then(callback)
+    }
+    insertarArticulo(articulo,callback){
+        this.$http.put('http://localhost:9000/insertarArticulo/' + articulo.idcompra,articulo).then(callback)
+    }
+    cambiarDescripcionCompra(compra,callback){
+        this.$http.put('http://localhost:9000/cambiarDescripcionCompra/' + compra.id ,compra).then(callback)
+    }
 
 
 }
