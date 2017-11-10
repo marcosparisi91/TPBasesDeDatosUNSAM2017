@@ -14,5 +14,10 @@ const routes = ($stateProvider, $urlRouterProvider) => {
           templateUrl: "partials/CargaCompra.html",
           controller: "CargaController as cargaCtrl"
         })
+        .state('Requeridos', {
+          url: "/Requeridos",
+          templateUrl: "partials/Requeridos.html",
+          controller: "RequeridosController as requeridosCtrl"
+        })
     }
     

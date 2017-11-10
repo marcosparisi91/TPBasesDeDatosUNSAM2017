@@ -28,7 +28,9 @@ class ComprasService{
     cambiarDescripcionCompra(compra,callback){
         this.$http.put('http://localhost:9000/cambiarDescripcionCompra/' + compra.id ,compra).then(callback)
     }
-
+    eliminarArticuloCompra(idcompra,articulo,callback){
+        this.$http.put('http://localhost:9000/eliminarArticuloCompra/' + idcompra ,articulo).then(callback)
+    }
 
 }
 

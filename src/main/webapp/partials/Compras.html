@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="Compra in comprasCtrl.compras">
-            <th > <a ui-sref="CargaCompra({id: Compra.idcompra})"> {{Compra.idcompra}} </a></th>
+            <th > <a ui-sref="CargaCompra({id: Compra.idcompra})"  style="color: blue !important"> {{Compra.idcompra}} </a></th>
             <td class="color-negro">{{Compra.descripcion}}</td>
             <td class="color-negro">{{Compra.fecha_hora}}</td>
             

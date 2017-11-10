@@ -1,0 +1,27 @@
+<div class="container-fluid d-inline-block">
+    
+    <div class="container-fluid" >
+       
+
+        <table class="table table-bordered ">
+            <thead>
+              <tr>
+                <th scope="col">ID articulo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Cantidad Requerida</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="articulo in requeridosCtrl.articulos">
+                <th > {{articulo.articulo_idarticulo}} </th>
+                <td class="color-negro">{{articulo.descripcion}}</td>
+                <td class="color-negro">{{articulo.cantidad_aproximada}}</td>
+                
+              </tr>
+    
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary btn-lg" ng-click="requeridosCtrl.Exportar()"  >Exportar</button>
+    </div>
+</div>

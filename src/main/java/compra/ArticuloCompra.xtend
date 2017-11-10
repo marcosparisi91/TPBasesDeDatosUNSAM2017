@@ -11,6 +11,8 @@ class ArticuloCompra {
 	int categoria_idcategoria
 	int unidad_idunidad 
 	
+	new(){}
+	
 	new (int _id, String _descripcion, int _cantidad, int _categoria, int _unidad){
 		idarticulo=_id
 		descripcion = _descripcion

@@ -40,7 +40,9 @@ class CargaController{
             })
       }
     }
-    eliminar(idarticulo){
-        //Eliminar articulo
+    eliminar(articulo){
+        this.ComprasService.eliminarArticuloCompra(this.$stateParams.id,articulo,(response)=>{
+            this.findArticulosCompras()
+        })
     }
 }

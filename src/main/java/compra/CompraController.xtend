@@ -26,7 +26,7 @@ class CompraController {
 	def Result compras() {
 		try {
 			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
-			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
 				"1234");
 			var Statement s = conexion.createStatement()
 			var ResultSet rs = s.executeQuery("select * from compra");
@@ -51,7 +51,7 @@ class CompraController {
 		try {
 			
 			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
-			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
 				"1234");
 			var Statement s = conexion.createStatement()
 			var ResultSet rs = s.executeQuery("select * from compra where idcompra = '"+id+"'");
@@ -75,7 +75,7 @@ class CompraController {
 		try {
 			
 			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
-			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
 				"1234");
 			var Statement s = conexion.createStatement()
 			var ResultSet rs = s.executeQuery("SELECT art.idarticulo, art.descripcion, art.categoria_idcategoria, art.unidad_idunidad, ahc.cantidad FROM articulo art left join articulo_has_compra ahc on art.idarticulo = ahc.articulo_idarticulo where ahc.compra_idcompra = '"+id+"'");
@@ -102,7 +102,7 @@ class CompraController {
 	def Result insertarCompra(){
 		try{
 		DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
-			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
 				"1234");
 			 var String fecha= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())
 			var Statement s = conexion.createStatement()
@@ -133,7 +133,7 @@ class CompraController {
 		try{
 			var ArticuloInsert articulo = body.fromJson(ArticuloInsert)
 			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
-			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
 				"1234");
 			 
 			var Statement s = conexion.createStatement()
@@ -183,11 +183,35 @@ class CompraController {
 		try{
 			var Compra compra = body.fromJson(Compra)
 			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
-			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root",
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
 				"1234");
 			 
 			var Statement s = conexion.createStatement()
 			s.executeUpdate("UPDATE compra SET descripcion ='"+ compra.descripcion  +"' WHERE idcompra='" + compra.idcompra + "'; ")
+			conexion.close();
+			response.contentType = ContentType.APPLICATION_JSON
+			ok()
+			
+		} catch (Exception E) {
+			println(E.message)
+			internalServerError(E.message)
+		}
+	}
+	
+	@Put("/eliminarArticuloCompra/:id")
+	def Result eliminarArticuloCompra(@Body String body){
+		
+			
+		try{
+			
+			var ArticuloCompra articuloCompra = body.fromJson(ArticuloCompra)
+			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
+				"1234");
+			 
+			var Statement s = conexion.createStatement()
+			s.executeUpdate("update articulo set cantidad = cantidad - "+articuloCompra.cantidad_compra +" where idarticulo ='"+ articuloCompra.idarticulo +"' ;")
+			s.executeUpdate("DELETE from articulo_has_compra WHERE articulo_idarticulo='"+articuloCompra.idarticulo+ "' AND compra_idcompra='"+id+"';")
 			conexion.close();
 			response.contentType = ContentType.APPLICATION_JSON
 			ok()
@@ -202,5 +226,29 @@ class CompraController {
 		XTRest.start(9000, CompraController)
 	}
 	
+	
+	@Get("/requeridos")
+	def Result requeridos() {
+		try {
+			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver())
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera?useSSL=false", "root",
+				"1234");
+			var Statement s = conexion.createStatement()
+			var ResultSet rs = s.executeQuery("SELECT r.articulo_idarticulo, a.descripcion, r.cantidad_aproximada FROM requerido  r left join articulo a on r.articulo_idarticulo=a.idarticulo;");
+			// order by idcompra desc limit 10
+			var List<ArticuloRequerido> articulosRequeridos = new ArrayList<ArticuloRequerido>()
+
+			while (rs.next()) {
+				
+				articulosRequeridos.add(new ArticuloRequerido(rs.getInt("articulo_idarticulo"), rs.getInt("cantidad_aproximada"), rs.getString("descripcion")));
+			}
+			conexion.close();
+
+			response.contentType = ContentType.APPLICATION_JSON
+			ok(articulosRequeridos.toJson)
+		} catch (Exception E) {
+		}
+
+	}
 
 }
