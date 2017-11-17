@@ -1,71 +1,73 @@
 <!DOCTYPE html>
-<html lang="es" >
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Software Heladera</title>
-        <!-- Your custom styles (optional) -->
-        <link href="css/main.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<html lang="es">
 
-  <!--      <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Software Heladera</title>
+    <!-- Your custom styles (optional) -->
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+
+    <!--      <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="js/popper.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
 
-        <script src="node_modules/underscore/underscore.js"></script>
-        <script src="node_modules/angular/angular.min.js"></script>
-        <script src="node_modules/angular-animate/angular-animate.min.js"></script>
-        <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-      
-    </head>
+    <script src="node_modules/underscore/underscore.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-    <body ng-app="myApp" >
+</head>
 
-       <nav class="navbar navbar-expand-lg navbar-dark indigo">
-            <a class="navbar-brand" href="#/!"> Software Heladera</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-             aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
+<body ng-app="myApp">
+
+    <nav class="navbar navbar-expand-lg navbar-dark indigo">
+        <a class="navbar-brand" href="#/!"> Software Heladera</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="Compras"  ><i class="fa fa-map-marker" aria-hidden="true"></i> Compras </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="Requeridos"  ><i class="fa fa-map-marker" aria-hidden="true"></i> Requeridos </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        
-        <!-- VISTA -->
-        <div ui-view></div>
-        
-      
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="Compras"><i class="fa fa-map-marker" aria-hidden="true"></i> Compras </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="Requeridos"><i class="fa fa-map-marker" aria-hidden="true"></i> Requeridos </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-        <script src="js/domain/Compra.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/domain/ArticuloCompra.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/domain/ArticulosRequeridos.js" type="text/javascript" charset="utf-8"></script>
+    <!-- VISTA -->
+    <div ui-view></div>
+    
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js></script>  
+    <script src="js/domain/Compra.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/domain/ArticuloCompra.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/domain/ArticulosRequeridos.js" type="text/javascript" charset="utf-8"></script>
 
-        <script src="js/services/CompraService.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/services/RequeridosService.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/services/CompraService.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/services/RequeridosService.js" type="text/javascript" charset="utf-8"></script>
 
-        <script src="js/controllers/ComprasController.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/controllers/CargaController.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/controllers/RequeridosController.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/controllers/ComprasController.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/controllers/CargaController.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/controllers/RequeridosController.js" type="text/javascript" charset="utf-8"></script>
 
-        <script src="js/routes.js" type="text/javascript" charset="utf-8"></script>
-        <!-- APLICATION -->
-        <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
-        
-    </body>
+    <script src="js/routes.js" type="text/javascript" charset="utf-8"></script>
+    <!-- APLICATION -->
+    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+</body>
 
 </html>
